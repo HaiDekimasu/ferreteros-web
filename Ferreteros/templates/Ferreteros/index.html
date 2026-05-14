@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogos - Ferreteros</title>
+    <style>
+        /* Estilos basados en image_d834c1.png */
+        :root {
+            --azul-sodimac: #004b82; /* El azul profundo de la imagen */
+            --gris-texto: #4a4a4a;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: var(--gris-texto);
+        }
+
+        /* Header similar al de la captura */
+        header {
+            background: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--gris-texto);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Banner Principal */
+        .banner {
+            background: linear-gradient(rgba(0, 75, 130, 0.8), rgba(0, 75, 130, 0.8)), 
+                        url('/static/background.jpg'); /* Tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Contenedor de Botones (Grilla) */
+        .main-container {
+            max-width: 1200px;
+            margin: -50px auto 50px; /* Sube un poco para entrar en el banner */
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .grid-catalogos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        /* Botones estilo Sodimac */
+        .btn-pdf {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: white;
+            color: var(--azul-sodimac);
+            border: 2px solid var(--azul-sodimac);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 0.85rem;
+            min-height: 50px;
+        }
+
+        .btn-pdf:hover {
+            background-color: var(--azul-sodimac);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            color: var(--azul-sodimac);
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <span style="color: #e30613;">■</span> EMPRESAS
+        </div>
+        <div class="auth-buttons">
+            <span style="color: var(--azul-sodimac); font-weight: bold;">Catálogos Digitales</span>
+        </div>
+    </header>
+
+    <div class="banner">
+        <h1>Centro de Descargas</h1>
+        <p>Accede a todos nuestros catálogos de ferretería en un solo lugar</p>
+    </div>
+
+    <div class="main-container">
+        <h2>Conoce todos los beneficios</h2>
+        
+        <div class="grid-catalogos">
+            {% for nombre in catalogos %}
+                <a href="/static/pdfs/{{ nombre }}.pdf" target="_blank" class="btn-pdf">
+                    {{ nombre }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
